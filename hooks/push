@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+[ -z "$BASE_TAGS" ] && BASE_TAGS="3.6-buster 3.7-buster"
+env
+execute() { echo "> $@"; "$@"; }
+
+for BASE_TAG in $BASE_TAGS
+do execute docker push $DOCKER_REPO:$BASE_TAG
+done
