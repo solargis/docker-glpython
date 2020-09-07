@@ -1,7 +1,8 @@
 #!/bin/bash -e
 
 [ -z "$BASE_TAGS" ] && BASE_TAGS="3.6-buster 3.7-buster"
+execute() { echo "> $@"; "$@"; }
 
 for BASE_TAG in $BASE_TAGS
-do docker build --build-arg BASE_TAG=$BASE_TAG -f $DOCKERFILE_PATH --tag $IMAGE_NAME:$BASE_TAG .
+do execute docker build --build-arg BASE_TAG=$BASE_TAG -f $DOCKERFILE_PATH --tag $IMAGE_NAME:$BASE_TAG .
 done
