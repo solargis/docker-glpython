@@ -5,5 +5,5 @@ env
 execute() { echo "> $@"; "$@"; }
 
 for BASE_TAG in $BASE_TAGS
-do execute docker build --build-arg BASE_TAG=$BASE_TAG -f $DOCKERFILE_PATH --tag $IMAGE_NAME:$BASE_TAG .
+do execute docker build --build-arg BASE_TAG=$BASE_TAG -f $DOCKERFILE_PATH --tag $DOCKER_REPO:$BASE_TAG .
 done
